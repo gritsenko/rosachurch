@@ -1,0 +1,14 @@
+module.exports = {
+  title: "Rosa Church",
+  tagline: "Московская Христианская Харизматическая церковь",
+  description: "Rosa Church website",
+  address: "107564, Москва, ул. Краснобогатырская 38, стр. 2",
+  phone: "+7 (495) 9633511",
+  email: "info@rosachurch.ru",
+  skype: "rosachurch",
+  baseurl: process.env.ELEVENTY_ENV === "production" ? "/rosachurch" : "",
+  social: {
+    twitter: "http://twitter.com/RosaChurch",
+    youtube: "http://www.youtube.com/user/rosachurch"
+  }
+};
