@@ -1,0 +1,39 @@
+# Node.js
+node_modules/
+
+# Eleventy output
+_site/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Environment
+.env
+.env.*
+
+# Misc
+*.local
+*.lock
+
+# Optional: ignore build artifacts
+/dist/
+
+# Optional: ignore coverage reports
+coverage/
+
+# Optional: ignore temp files
+*.tmp
+*.swp
+*.swo
+
+# Optional: ignore Mac system files
+*.DS_Store

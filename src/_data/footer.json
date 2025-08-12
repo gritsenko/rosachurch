@@ -1,0 +1,14 @@
+{
+  "interesting": [
+    { "title": "Что такое церковь?", "url": "https://rosachurch.ru/about/church" },
+    { "title": "Во что мы верим", "url": "https://rosachurch.ru/about/believe" },
+    { "title": "Расписание богослуждений", "url": "https://rosachurch.ru/services/raspisanie" },
+    { "title": "Водное крещение", "url": "https://rosachurch.ru/about/baptizo" },
+    { "title": "Карта сайта", "url": "https://rosachurch.ru/sitemap" }
+  ],
+  "useful": [
+    { "title": "Альфа", "url": "http://www.alphacourse.ru/" },
+    { "title": "Супружеский курс", "url": "http://www.familycourse.ru/" },
+    { "title": "Ассоциация «Харизма»", "url": "http://www.harisma.org/" }
+  ]
+}

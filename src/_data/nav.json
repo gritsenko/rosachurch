@@ -1,0 +1,9 @@
+[
+  { "title": "Главная", "url": "/" },
+  { "title": "О церкви", "url": "/about/" },
+  { "title": "Служения", "url": "/services/" },
+  { "title": "Проповеди", "url": "/sermons/" },
+  { "title": "Прямой эфир", "url": "/live/" },
+  { "title": "Контакты", "url": "/contacts/" },
+  { "title": "Пожертвования", "url": "/donate/" }
+]

@@ -1,0 +1,36 @@
+<footer class="site-footer">
+  <div class="footer-columns">
+    <div class="footer-col">
+      <h4>ИНТЕРЕСНЫЕ РАЗДЕЛЫ</h4>
+      <ul>
+        {% for link in footer.interesting %}
+          <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ПОЛЕЗНЫЕ ССЫЛКИ</h4>
+      <ul>
+        {% for link in footer.useful %}
+          <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>СВЯЖИТЕСЬ С НАМИ</h4>
+      <address>
+        <div>{{ site.address }}</div>
+        <div><a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a></div>
+        <div><a href="mailto:{{ site.email }}">{{ site.email }}</a></div>
+        <div><a href="skype:{{ site.skype }}?call">{{ site.skype }}</a></div>
+      </address>
+      <div class="social">
+        <a href="{{ site.social.twitter }}" target="_blank" rel="noopener">Twitter</a>
+        <a href="{{ site.social.youtube }}" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+  </div>
+  <div class="copyright">
+    © 2011-2016 Все права защищены | rosachurch.ru | Религиозная организация
+  </div>
+</footer>

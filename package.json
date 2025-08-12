@@ -1,0 +1,18 @@
+{
+  "name": "rosachurch",
+  "version": "1.0.0",
+  "description": "This site is built with Eleventy (11ty) and will be hosted on GitHub Pages. Content will be migrated from https://rosachurch.ru.",
+  "main": "index.js",
+  "scripts": {
+  "dev": "eleventy --serve",
+  "build": "eleventy",
+  "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}
