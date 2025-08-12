@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Церковь "Роса" - Современный шаблон</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Применение шрифта ко всему сайту */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Светло-серый фон */
+        }
+        /* Анимация для плавного появления */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Стили для кнопок навигации */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6; /* Синий цвет для подчеркивания */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Шапка сайта -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Логотип -->
+            <a href="#" class="text-2xl font-bold text-blue-600">
+                ЦЕРКОВЬ "РОСА"
+            </a>
+            <!-- Навигация для десктопов -->
+            <nav class="hidden md:flex items-center space-x-6">
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600 active">Главная</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600">О церкви</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600">Служения</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600">Проповеди</a>
+                <a href="#" class="nav-link text-gray-600 hover:text-blue-600">Контакты</a>
+                <a href="#" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                    Пожертвовать
+                </a>
+            </nav>
+            <!-- Кнопка мобильного меню -->
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+        </div>
+        <!-- Мобильное меню -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Главная</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">О церкви</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Служения</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Проповеди</a>
+            <a href="#" class="block py-2 text-gray-600 hover:text-blue-600">Контакты</a>
+            <a href="#" class="block mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-center">Пожертвовать</a>
+        </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="container mx-auto px-6 py-12">
+
+        <!-- Секция "Альфа" (главный баннер) -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16 fade-in">
+            <div class="md:flex">
+                <div class="md:w-1/2">
+                    <img class="h-64 w-full object-cover md:h-full" src="https://images.unsplash.com/photo-1507692049790-de586616e0ac?q=80&w=2070&auto=format&fit=crop" alt="Группа людей в церкви" onerror="this.onerror=null;this.src='https://placehold.co/800x600/a0aec0/ffffff?text=Фото+встречи';">
+                </div>
+                <div class="p-8 md:p-12 lg:p-16 flex flex-col justify-center md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Альфа-курс</h1>
+                    <p class="text-xl text-gray-600 mb-6">Откройте для себя основы христианской веры в дружеской атмосфере. Каждую среду в 19:00.</p>
+                    <a href="#" class="self-start bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">Узнать больше</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Секция "События" -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.2s;">
+            <h2 class="text-3xl font-bold text-center mb-8">Ближайшие события</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Карточка события 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 flex items-center">
+                        <div class="text-center mr-6">
+                            <p class="text-4xl font-bold text-blue-600">03</p>
+                            <p class="text-sm text-gray-500">октября</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">Альфа-конференция | Москва</h3>
+                            <p class="text-gray-600 text-sm">3-4 октября. Впервые в России — премьера нового Молодежного Альфа сериала!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Карточка события 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 flex items-center">
+                        <div class="text-center mr-6">
+                            <p class="text-4xl font-bold text-blue-600">17</p>
+                            <p class="text-sm text-gray-500">ноября</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">Старт Альфа-курса</h3>
+                            <p class="text-gray-600 text-sm">У нас радостная новость - стартует новый сезон Альфа-курса!</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Карточка события 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 flex items-center">
+                        <div class="text-center mr-6">
+                            <p class="text-4xl font-bold text-blue-600">25</p>
+                            <p class="text-sm text-gray-500">декабря</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">Рождественское Богослужение</h3>
+                            <p class="text-gray-600 text-sm">Приглашаем на праздничное рождественское богослужение!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-8">
+                <a href="#" class="text-blue-600 hover:underline font-semibold">Все новости →</a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Интересные разделы -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">ИНТЕРЕСНЫЕ РАЗДЕЛЫ</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Что такое церковь?</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Во что мы верим</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Расписание богослужений</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Домашние группы</a></li>
+                    </ul>
+                </div>
+                <!-- Полезные ссылки -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">ПОЛЕЗНЫЕ ССЫЛКИ</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Альфа</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Семейный курс</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition-colors">Ассоциация «Альфа»</a></li>
+                    </ul>
+                </div>
+                <!-- Свяжитесь с нами -->
+                <div>
+                    <h3 class="font-bold text-lg mb-4">СВЯЖИТЕСЬ С НАМИ</h3>
+                    <p class="mb-2">107561, Москва, ул. Краснобогатырская 38, стр. 2.</p>
+                    <p class="mb-2">
+                        <a href="tel:+74951989011" class="hover:text-blue-400 transition-colors">+7 (495) 198-90-11</a>
+                    </p>
+                    <p>
+                        <a href="mailto:info@rosachurch.ru" class="hover:text-blue-400 transition-colors">info@rosachurch.ru</a>
+                    </p>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+                <p>&copy; 2024 Церковь "Роса". Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Скрипт для мобильного меню
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+</html>

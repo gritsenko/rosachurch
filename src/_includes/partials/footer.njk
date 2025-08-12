@@ -1,36 +1,56 @@
-<footer class="site-footer">
-  <div class="footer-columns">
-    <div class="footer-col">
-      <h4>ИНТЕРЕСНЫЕ РАЗДЕЛЫ</h4>
-      <ul>
-        {% for link in footer.interesting %}
-          <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
+<!-- Подвал сайта -->
+<footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-6 py-12">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- Интересные разделы -->
+            <div>
+                <h3 class="font-bold text-lg mb-4">ИНТЕРЕСНЫЕ РАЗДЕЛЫ</h3>
+                <ul class="space-y-2">
+                    {% for link in footer.interesting %}
+                    <li><a href="{{ link.url }}" target="_blank" rel="noopener" class="hover:text-blue-400 transition-colors">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Полезные ссылки -->
+            <div>
+                <h3 class="font-bold text-lg mb-4">ПОЛЕЗНЫЕ ССЫЛКИ</h3>
+                <ul class="space-y-2">
+                    {% for link in footer.useful %}
+                    <li><a href="{{ link.url }}" target="_blank" rel="noopener" class="hover:text-blue-400 transition-colors">{{ link.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <!-- Свяжитесь с нами -->
+            <div>
+                <h3 class="font-bold text-lg mb-4">СВЯЖИТЕСЬ С НАМИ</h3>
+                <address class="not-italic">
+                    <p class="mb-2">{{ site.address }}</p>
+                    <p class="mb-2">
+                        <a href="tel:{{ site.phone | replace(' ', '') }}" class="hover:text-blue-400 transition-colors">{{ site.phone }}</a>
+                    </p>
+                    <p class="mb-2">
+                        <a href="mailto:{{ site.email }}" class="hover:text-blue-400 transition-colors">{{ site.email }}</a>
+                    </p>
+                    {% if site.skype %}
+                    <p class="mb-2">
+                        <a href="skype:{{ site.skype }}?call" class="hover:text-blue-400 transition-colors">{{ site.skype }}</a>
+                    </p>
+                    {% endif %}
+                </address>
+                {% if site.social %}
+                <div class="mt-4 flex space-x-4">
+                    {% if site.social.twitter %}
+                    <a href="{{ site.social.twitter }}" target="_blank" rel="noopener" class="hover:text-blue-400 transition-colors">Twitter</a>
+                    {% endif %}
+                    {% if site.social.youtube %}
+                    <a href="{{ site.social.youtube }}" target="_blank" rel="noopener" class="hover:text-blue-400 transition-colors">YouTube</a>
+                    {% endif %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="mt-12 border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+            <p>&copy; 2025 Церковь "Роса". Все права защищены.</p>
+        </div>
     </div>
-    <div class="footer-col">
-      <h4>ПОЛЕЗНЫЕ ССЫЛКИ</h4>
-      <ul>
-        {% for link in footer.useful %}
-          <li><a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.title }}</a></li>
-        {% endfor %}
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>СВЯЖИТЕСЬ С НАМИ</h4>
-      <address>
-        <div>{{ site.address }}</div>
-        <div><a href="tel:{{ site.phone | replace(' ', '') }}">{{ site.phone }}</a></div>
-        <div><a href="mailto:{{ site.email }}">{{ site.email }}</a></div>
-        <div><a href="skype:{{ site.skype }}?call">{{ site.skype }}</a></div>
-      </address>
-      <div class="social">
-        <a href="{{ site.social.twitter }}" target="_blank" rel="noopener">Twitter</a>
-        <a href="{{ site.social.youtube }}" target="_blank" rel="noopener">YouTube</a>
-      </div>
-    </div>
-  </div>
-  <div class="copyright">
-    © 2011-2016 Все права защищены | rosachurch.ru | Религиозная организация
-  </div>
 </footer>

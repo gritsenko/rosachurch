@@ -4,20 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ title }} | {{ site.title }}</title>
-    <link rel="stylesheet" href="{{ site.baseurl }}/assets/style.css" />
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Применение шрифта ко всему сайту */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Светло-серый фон */
+        }
+        /* Анимация для плавного появления */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Стили для кнопок навигации */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6; /* Синий цвет для подчеркивания */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
   </head>
-  <body>
-    {% include "partials/header.njk" %} {% include "partials/nav.njk" %}
-    <div class="container">
-      <main class="content">
-        {{ content | safe }}
-      </main>
-      {% if sidebar %}
-      <aside class="sidebar">
-        {{ sidebar | safe }}
-      </aside>
-      {% endif %}
-    </div>
+  <body class="text-gray-800">
+    {% include "partials/header.njk" %}
+    
+    <!-- Основной контент -->
+    <main class="container mx-auto px-6 py-12">
+      <div class="{% if sidebar %}grid lg:grid-cols-3 gap-8{% endif %}">
+        <div class="{% if sidebar %}lg:col-span-2{% endif %} bg-white rounded-2xl shadow-lg p-8 fade-in">
+          {{ content | safe }}
+        </div>
+        {% if sidebar %}
+        <aside class="bg-white rounded-xl shadow-md p-6">
+          {{ sidebar | safe }}
+        </aside>
+        {% endif %}
+      </div>
+    </main>
+    
     {% include "partials/footer.njk" %}
+
+    <script>
+        // Скрипт для мобильного меню
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
   </body>
 </html>

@@ -1,13 +1,29 @@
-<header class="site-header">
-  <div class="topbar"></div>
-  <div class="branding">
-    <div class="logo" style="position: absolute; top: 0;">
-      <img src="{{ site.baseurl }}/assets/logo.png" alt="Rosa Church Logo" />
-      <!-- Placeholder logo: replace with actual asset if provided -->
-      <!-- <div class="logo-circle">ROSA</div> -->
+<!-- Шапка сайта -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <!-- Логотип -->
+        <a href="{{ site.baseurl }}/" class="text-2xl font-bold text-blue-600">
+            ЦЕРКОВЬ "РОСА"
+        </a>
+        <!-- Навигация для десктопов -->
+        <nav class="hidden md:flex items-center space-x-6">
+            {% for item in nav %}
+            <a href="{{ site.baseurl }}{{ item.url | url }}" class="nav-link text-gray-600 hover:text-blue-600{% if page.url == item.url %} active{% endif %}">{{ item.title }}</a>
+            {% endfor %}
+            <a href="{{ site.baseurl }}/donate/" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition-transform transform hover:scale-105">
+                Пожертвовать
+            </a>
+        </nav>
+        <!-- Кнопка мобильного меню -->
+        <button id="mobile-menu-button" class="md:hidden text-gray-600 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+        </button>
     </div>
-    <!-- <div class="site-title">
-      <h1>{{ site.tagline }}</h1>
-    </div> -->
-  </div>
+    <!-- Мобильное меню -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+        {% for item in nav %}
+        <a href="{{ site.baseurl }}{{ item.url | url }}" class="block py-2 text-gray-600 hover:text-blue-600">{{ item.title }}</a>
+        {% endfor %}
+        <a href="{{ site.baseurl }}/donate/" class="block mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg text-center">Пожертвовать</a>
+    </div>
 </header>

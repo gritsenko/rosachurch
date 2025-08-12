@@ -3,6 +3,21 @@ title: События
 layout: layout.njk
 ---
 
- 03 Октябрь [Альфа-конференция | Москва](https://rosachurch.ru/content/alfa-konferenciya-moskva) 3–4 октября Впервые в России — премьера нового Молодёжного Альфа сериала!
+# Все события церкви "Роса"
 
-[Все новости](https://rosachurch.ru/news-events)
+Здесь вы найдете информацию о всех предстоящих и прошедших событиях нашей церкви.
+
+## Предстоящие события
+
+{%- set eventList = collections.events | sort(attribute="data.date") | reverse -%}
+{%- for event in eventList -%}
+
+### {{ event.data.title }}
+**Дата:** {{ event.data.date | date }}  
+**Описание:** {{ event.data.description }}
+
+[Подробнее →]({{ event.url }})
+
+---
+
+{%- endfor -%}

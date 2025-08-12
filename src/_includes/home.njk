@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }} | {{ site.title }}</title>
+    <!-- Подключение Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Подключение шрифта Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Применение шрифта ко всему сайту */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Светло-серый фон */
+        }
+        /* Анимация для плавного появления */
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Стили для кнопок навигации */
+        .nav-link {
+            position: relative;
+            transition: color 0.3s;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #3b82f6; /* Синий цвет для подчеркивания */
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+    </style>
+  </head>
+  <body class="text-gray-800">
+    {% include "partials/header.njk" %}
+    
+    <!-- Основной контент -->
+    <main class="container mx-auto px-6 py-12">
+        
+        {% set latestEvent = collections.events | sort(attribute="data.date") | reverse | first %}
+        {% if latestEvent %}
+        <!-- Секция "Альфа" (главный баннер) с последним событием -->
+        <section class="bg-white rounded-2xl shadow-lg overflow-hidden mb-16 fade-in">
+            <div class="md:flex">
+                <div class="md:w-1/2">
+                    <img class="h-64 w-full object-cover md:h-full" src="https://images.unsplash.com/photo-1507692049790-de586616e0ac?q=80&w=2070&auto=format&fit=crop" alt="Группа людей в церкви" onerror="this.onerror=null;this.src='https://placehold.co/800x600/a0aec0/ffffff?text=Фото+встречи';">
+                </div>
+                <div class="p-8 md:p-12 lg:p-16 flex flex-col justify-center md:w-1/2">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">{{ latestEvent.data.title }}</h1>
+                    <p class="text-xl text-gray-600 mb-6">{{ latestEvent.data.description }}</p>
+                    <a href="{{ latestEvent.url }}" class="self-start bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg transition-transform transform hover:scale-105">Узнать больше</a>
+                </div>
+            </div>
+        </section>
+        {% endif %}
+
+        <!-- Секция "События" -->
+        <section class="mb-16 fade-in" style="animation-delay: 0.2s;">
+            <h2 class="text-3xl font-bold text-center mb-8">Ближайшие события</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {% set eventList = collections.events | sort(attribute="data.date") | reverse %}
+                {% for event in (eventList | slice(0, 6)) %}
+                {% set eventDate = event.data.date %}
+                <!-- Карточка события -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                    <div class="p-6 flex items-center">
+                        <div class="text-center mr-6">
+                            <p class="text-4xl font-bold text-blue-600">{{ eventDate | date('DD') }}</p>
+                            <p class="text-sm text-gray-500">{{ eventDate | date('MMMM', 'ru') }}</p>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-1">{{ event.data.title }}</h3>
+                            <p class="text-gray-600 text-sm">{{ event.data.description }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <div class="text-center mt-8">
+                <a href="/events/" class="text-blue-600 hover:underline font-semibold">Все события →</a>
+            </div>
+        </section>
+
+        <!-- Основной контент страницы -->
+        {% if content %}
+        <section class="bg-white rounded-2xl shadow-lg p-8 fade-in" style="animation-delay: 0.4s;">
+            {{ content | safe }}
+        </section>
+        {% endif %}
+
+    </main>
+    
+    {% include "partials/footer.njk" %}
+
+    <script>
+        // Скрипт для мобильного меню
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
+    </script>
+  </body>
+</html>
